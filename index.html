@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Un minuto sin tiempo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-black text-white relative overflow-hidden">
+    <!-- PRELOADER -->
+    <div id="preloader" 
+         class="fixed inset-0 flex items-center justify-center bg-black z-[9999] transition-opacity duration-700">
+      <video id="introVideo"
+             class="w-full h-full object-cover"
+             muted playsinline autoplay preload="auto">
+        <!-- 🔸 reemplazá "video.mp4" por el archivo que te pase el cliente -->
+        <source src="webAgusBeig.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main id="mainContent" class="opacity-0 transition-opacity duration-700">
+      <!-- ejemplo de contenido -->
+      
+      <header class="fixed top-0 left-0 w-full bg-black/70 backdrop-blur-md z-50">
+        <nav class="max-w-6xl mx-auto flex justify-between items-center p-4">
+          <h1 class="text-xl font-bold">Un minuto sin tiempo</h1>
+          <ul class="flex gap-6">
+        <li><a href="#inicio" class="hover:text-gray-400 transition">Inicio</a></li>
+        <li><a href="#sobre" class="hover:text-gray-400 transition">Sobre</a></li>
+        <li><a href="#contacto" class="hover:text-gray-400 transition">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+    </main>
+
+    <script>
+      const preloader = document.getElementById("preloader");
+      const video = document.getElementById("introVideo");
+      const main = document.getElementById("mainContent");
+
+      // Oculta el video una vez que la página cargó o el video termina
+      function hidePreloader() {
+        preloader.classList.add("opacity-0", "pointer-events-none");
+        main.classList.add("opacity-100");
+        setTimeout(() => preloader.remove(), 800);
+      }
+
+      // Cuando todo el contenido esté listo
+      window.addEventListener("load", () => {
+        // Si el video tiene una duración, esperá que termine
+        if (video.readyState >= 2) {
+          video.addEventListener("ended", hidePreloader);
+          // Por si el video es corto o no termina bien, seguridad:
+          setTimeout(hidePreloader, 24000);
+        } else {
+          hidePreloader();
+        }
+      });
+    </script>
+  </body>
+</html>
