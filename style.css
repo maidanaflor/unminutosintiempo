@@ -1,0 +1,689 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #262827;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu {
+  font-family: 'Special Elite', cursive;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background-color: #262827;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #D9C2AB;
+}
+
+.logo img {
+  width: 50px;
+  height: auto;
+  display: block;
+}
+
+#menu-icon {
+  font-size: 30px;
+  color: #D9C2AB;
+  cursor: pointer;
+  display: none;
+}
+
+.navbar {
+  width: 100%;
+  background-color: #262827;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+
+.nav-link {
+  color: #D9C2AB;
+  text-decoration: none;
+  border: 2px solid #D9C2AB;
+  padding: 8px 16px;
+  border-radius: 50px;
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: rgba(217, 194, 171, 0.2);
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  #menu-icon {
+    display: block;
+  }
+
+  .navbar {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background-color: #262827;
+    display: none;
+    padding: 20px 0;
+    border-top: 1px solid #D9C2AB;
+    border-radius: 0 0 20px 20px;
+  }
+
+  .navbar.active {
+    display: flex;
+  }
+}
+
+/* HOME */
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  text-align: center;
+}
+
+.home-contenido {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 20px; 
+}
+
+.home-contenido img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.text-home {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInText 1s ease-out forwards;
+  animation-delay: 0.5s;
+  color: #D9C2AB;
+}
+
+@keyframes fadeInText {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .text-home {
+    font-size: 18px;
+    padding: 0 15px;
+  }
+
+  .home-contenido {
+    padding: 0 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .text-home {
+    font-size: 17px;
+    padding: 0 20px;
+  }
+
+  .home {
+    padding: 30px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .text-home {
+    font-size: 16px;
+    padding: 0 25px;
+  }
+
+  .home-contenido {
+    padding: 0 15px;
+  }
+}
+
+/* MENTORIAS */
+
+.mentorias {
+  scroll-margin-top: 100px; /* 👉 evita que quede debajo del header al hacer clic */
+  margin-top: 60px; /* espacio visual desde el borde superior */
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px; /* separa la parte de mentorías y el bloque "por qué cantar" */
+}
+
+.cursos-contenido {
+  background: url('img/fondo1.jpg') no-repeat center center;
+  background-size: cover;
+  padding: 60px 20px;
+  border-radius: 25px;
+  border: 2px solid #D9C2AB;
+  max-width: 1200px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.titulo {
+  font-size: 48px;
+  margin-bottom: 40px;
+  font-family: 'Special Elite', cursive;
+  color: #D9C2AB;
+}
+
+.mentor-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  justify-items: center;
+  align-items: start;
+}
+
+.mentor-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
+  transition: transform 0.3s ease;
+}
+
+.mentor-card img {
+  width: 80%;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mentor-card img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(217, 194, 171, 0.4);
+}
+
+.mentor-card button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: 2px solid #D9C2AB;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #D9C2AB;
+  border-radius: 50px;
+  font-size: 16px;
+  font-family: 'Special Elite', cursive;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mentor-card button:hover {
+  background-color: rgba(217, 194, 171, 0.2);
+  transform: scale(1.05);
+}
+
+
+@media (max-width: 1024px) {
+  .mentor-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .mentor-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .titulo {
+    font-size: 36px;
+  }
+}
+
+/* POR QUE CANTAR */
+
+.porquecantar {
+  background: url('img/fondo2.jpg') no-repeat center center;
+  background-size: cover;
+  padding: 40px 30px;
+  border-radius: 25px;
+  border: 2px solid #D9C2AB;
+  max-width: 1200px;
+  margin: 60px auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.porquecantar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.3); /* Oscurece para contraste */
+  border-radius: 25px;
+  z-index: -1;
+}
+
+.titulo2 {
+  font-family: 'Special Elite', cursive;
+  font-size: 40px;
+  color: #262827; /* Color claro que contrasta bien */
+  margin-bottom: 30px;
+}
+
+.porquecantar p {
+  color: #262626;
+  font-size: 18px;
+  line-height: 1.8;
+  text-align: justify;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+@media (max-width: 768px) {
+  .titulo2 {
+    font-size: 32px;
+  }
+
+  .porquecantar p {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+}
+
+/*TESTIMONIOS */
+
+.historias {
+  scroll-margin-top: 100px;
+  margin-top: 60px;
+  background: url('img/fondo1.jpg') no-repeat center center;
+  background-size: cover;
+  padding: 60px 20px;
+  border-radius: 25px;
+  border: 2px solid #D9C2AB;
+  text-align: center;
+  color: #D9C2AB;
+  max-width: 1200px;
+  margin: 60px auto;
+
+}
+
+.historias .titulo {
+  font-family: 'Special Elite', cursive;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.historias .text-home {
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 0 auto 40px;
+  color: #f5e9dc;
+}
+
+.videos-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  justify-items: center;
+}
+
+.video-testimonio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.video-testimonio video {
+  width: 160px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 80px;
+  border: 3px solid #D4AF37;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.video-testimonio video:hover {
+  transform: scale(1.05);
+}
+
+.video-testimonio p {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #f5e9dc;
+}
+
+
+@media (max-width: 1024px) {
+  .videos-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .videos-container {
+    grid-template-columns: 1fr;
+  }
+
+  .video-testimonio video {
+    width: 180px;
+    height: 260px;
+  }
+}
+
+/*SOBRE MI*/
+
+.aboutme {
+  position: relative;
+  z-index: 1;
+  background: url('img/fondo2.jpg') no-repeat center center;
+  background-size: cover;
+  border: 2px solid #D9C2AB;
+  border-radius: 25px;
+  padding: 40px 30px;
+  max-width: 1000px;
+  margin: 60px auto;
+  scroll-margin-top: 100px;
+  color: #262827;
+  font-size: 18px;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.aboutme::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  z-index: -1;
+}
+
+
+.aboutme img {
+  width: 526px;
+  height: auto;
+  float: left;
+  margin: 0 30px 20px 0;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.aboutme::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+@media (max-width: 768px) {
+  .aboutme img {
+    float: none;
+    display: block;
+    margin: 0 auto 20px auto;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .aboutme {
+    text-align: left;
+    font-size: 16px;
+  }
+}
+
+/* CONTACTO */
+
+.contacto {
+  background: url('img/fondo1.jpg') no-repeat center center;
+  background-size: cover;
+  border: 2px solid #D9C2AB;
+  border-radius: 25px;
+  padding: 60px 40px;
+  max-width: 1000px;
+  margin: 60px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  color: #D9C2AB;
+  font-family: 'Special Elite', cursive;
+  scroll-margin-top: 100px;
+}
+
+.contact-form {
+  flex: 1 1 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form label {
+  font-size: 16px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  font-family: 'Special Elite', cursive;
+  font-size: 16px;
+  width: 100%;
+  resize: none;
+}
+
+.contact-form button {
+  margin-top: 15px;
+  padding: 12px;
+  background: transparent;
+  border: 2px solid #D9C2AB;
+  color: #D9C2AB;
+  font-size: 16px;
+  font-family: 'Special Elite', cursive;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #D9C2AB;
+  color: #1e1e1e;
+}
+
+.contact-info {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-info h3 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.contact-info p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  font-family: 'League Spartan', sans-serif;
+}
+
+.instagram {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-family: 'League Spartan', sans-serif;
+
+}
+
+.instagram-icon {
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 768px) {
+  .contacto {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contact-form,
+  .contact-info {
+    width: 100%;
+  }
+
+  .contact-info h3 {
+    font-size: 24px;
+  }
+}
+
+/*WHATSAPP BUTTON*/
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 9999;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+.whatsapp-float img {
+  width: 28px;
+  height: 28px;
+}
+
+/* Tooltip */
+.whatsapp-float::after {
+  content: "¡Chateá conmigo!";
+  position: absolute;
+  right: 70px;
+  bottom: 50%;
+  transform: translateY(50%);
+  background-color: #1e1e1e;
+  color: #fff;
+  font-size: 14px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  font-family: 'Special Elite', cursive;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.whatsapp-float:hover::after {
+  opacity: 1;
+}
+
+@media (max-width: 480px) {
+  .whatsapp-float {
+    display: none;
+  }
+}
+
+/* FOOTER */
+
+.copyright-bar {
+  width: 100%;
+  background-color: #1e1e1e;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.copyright-text {
+  color: #D9C2AB;
+  font-size: 16px;
+  margin: 0;
+}
+
+.separator {
+  width: 2px;
+  height: 20px;
+  background-color: #D4AF37;
+  display: inline-block;
+}
+
+.copyright-icon {
+  color: #D9C2AB;
+  font-size: 22px;
+  transition: transform 0.3s ease;
+}
+
+.copyright-icon:hover {
+  transform: rotate(15deg) scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .copyright-text {
+    font-size: 14px;
+  }
+
+  .copyright-icon {
+    font-size: 20px;
+  }
+
+  .separator {
+    height: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .copyright-text {
+    font-size: 13px;
+  }
+
+  .copyright-icon {
+    font-size: 18px;
+  }
+
+  .separator {
+    height: 14px;
+  }
+}
+

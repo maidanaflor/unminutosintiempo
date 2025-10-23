@@ -1,63 +1,244 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Un minuto sin tiempo</title>
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+
   </head>
-  <body class="bg-black text-white relative overflow-hidden">
-    <!-- PRELOADER -->
-    <div id="preloader" 
-         class="fixed inset-0 flex items-center justify-center bg-black z-[9999] transition-opacity duration-700">
-      <video id="introVideo"
-             class="w-full h-full object-cover"
-             muted playsinline autoplay preload="auto">
-        <!-- 🔸 reemplazá "video.mp4" por el archivo que te pase el cliente -->
-        <source src="webAgusBeig.mp4" type="video/mp4" />
+
+  <body>
+      <!-- PRELOADER -->
+    <div id="preloader" class="fixed inset-0 flex items-center justify-center bg-black z-[9999] transition-opacity duration-700">
+      <video id="introVideo" class="w-full h-full object-cover" muted playsinline autoplay preload="auto">
+        <source src="img/webAgusBeig.mp" type="video/mp4" />
       </video>
     </div>
 
+   <header class="menu">
+            <a href="#inicio" class="logo">
+                <img src="img/logocircular.png" alt=""></a>
+                <i class='bx bx-menu' id="menu-icon"></i>
+
+          <nav class="navbar">
+            <a href="#inicio" class= "nav-link">Inicio</a>
+            <a href="#mentorias" class= "nav-link" >Mentorias</a>
+            <a href="#historias" class= "nav-link" >Testimonios</a>
+            <a href="#sobremi" class= "nav-link" >Sobre Mi</a>
+            <a href="#contacto" class= "nav-link" >Contacto</a>
+          </nav>
+
+    </header>
+
     <!-- CONTENIDO PRINCIPAL -->
-    <main id="mainContent" class="opacity-0 transition-opacity duration-700">
-      <!-- ejemplo de contenido -->
-      
-      <header class="fixed top-0 left-0 w-full bg-black/70 backdrop-blur-md z-50">
-        <nav class="max-w-6xl mx-auto flex justify-between items-center p-4">
-          <h1 class="text-xl font-bold">Un minuto sin tiempo</h1>
-          <ul class="flex gap-6">
-        <li><a href="#inicio" class="hover:text-gray-400 transition">Inicio</a></li>
-        <li><a href="#sobre" class="hover:text-gray-400 transition">Sobre</a></li>
-        <li><a href="#contacto" class="hover:text-gray-400 transition">Contacto</a></li>
-      </ul>
-    </nav>
-  </header>
+    <main id="mainContent">
+
+      <section class="home" id="inicio">
+      <div class="home-contenido">
+        <img src="img/UNMINUTOSINTIEMPO-confondo-03 (2).jpg" alt="Unminutosintiempo">
+        <h3 class="text-home">Un lugar para latir de emoción a través de la musica, la voz, la respiración y 
+          el arte escénico, destinado a quienes consideran que la música es el elixir de la vida.</h3>
+      </div>
+    </section>
+
+    <section class="mentorias" id="mentorias">
+
+      <div class="cursos-contenido">
+        <h2 class="titulo">Mentorias</h2>
+
+        <div class="mentor-cards">
+
+          <div class="mentor-card">
+             <img src="img/Salir - 1.png" alt="Salir del Closet">
+              <button>Inscribite</button>
+         </div>
+
+        <div class="mentor-card">
+           <img src="img/Del alma.png" alt="Del Alma al Escenario">
+            <button>Inscribite</button>
+         </div>
+
+        <div class="mentor-card">
+           <img src="img/El idioma universal.png" alt="El idioma universal">
+            <button>Inscribite</button>
+         </div>
+
+        </div>
+
+      </div>
+
+      <div class="porquecantar">
+        <h2 class="titulo2">¿Por que cantar?</h2>
+        <p>Cantar conscientemente no es solo una cuestión artística, es una experiencia corporal y emocional profunda. 
+          Al respirar como lo hace un cantante —de forma rítmica y profunda— activamos el nervio vago, lo que ayuda a regular 
+          el ritmo cardíaco, reducir el estrés y generar un estado de calma. Aprender a respirar bien no es solo una 
+          herramienta vocal: es una forma de habitar el presente.
+          No hace falta que seas profesional para sentir los efectos del canto. Esta práctica activa múltiples áreas del cerebro, 
+          libera dopamina, oxitocina y endorfinas —las hormonas del bienestar, la confianza y el vínculo— y tiene un impacto real sobre el estado de ánimo, la autoestima y la percepción del propio cuerpo. Cantar transforma.
+          Este espacio es para vos si querés dar ese paso: si soñás con cantar y sentís que llegó el momento. Si ya tomaste clases y querés ir más profundo. Si buscás una formación integral que incluya cuerpo, técnica e interpretación. Si tenés un proyecto artístico, o si simplemente querés recuperar la confianza en tu voz. También si nunca cantaste y te querés dar la oportunidad de empezar.
+          Cantar con otros sincroniza los latidos, despierta el oído, la empatía y la presencia. Es un camino hacia una voz más libre, más consciente, más auténtica.</p>
+      </div>
+    </section>
+
+    <section class="historias" id="historias"> 
+      <h2 class="titulo">Lo que dicen las voces que se animaron a transformarse</h2>
+      <h3 class="text-home">
+        Cada encuentro deja una huella distinta, un nuevo sonido que se revela. 
+        En Un minuto sin tiempo, 
+        las experiencias de quienes transitaron este camino reflejan que cantar va mucho más allá de la técnica: 
+        es liberar, reconocerse y volver a habitar la voz desde un lugar auténtico y consciente
+      </h3>
+
+      <div class="videos-container">
+
+      <div class="video-testimonio">
+        <video src="img/Bety.mp4" autoplay loop muted playsinline></video>
+        <p>Bety</p>
+      </div>
+
+      <div class="video-testimonio">
+        <video src="img/Ailen.mp4" autoplay loop muted playsinline></video>
+        <p>Ailen</p>
+      </div>
+
+      <div class="video-testimonio">
+        <video src="img/Alina.mp4" autoplay loop muted playsinline></video>
+        <p>Alina</p>
+      </div>
+
+      <div class="video-testimonio">
+        <video src="img/Flor.mp4" autoplay loop muted playsinline></video>
+        <p>Flor</p>
+      </div>
+
+    </div>
+    </section>
+
+    <section class="aboutme" id="sobremi">
+        <img src="img/sobremi.jpg" alt="Sobre Mi">
+        <p>Soy Valeria Jofre, cantante, profesora, directora de coros y creadora de Un Minuto Sin Tiempo, 
+          un espacio para que puedas descubrir el poder transformador de tu voz.Mi camino empezó en la música desde 
+          muy chica, cantando en coros, y con el tiempo fui formándome como cantante lírica en diversas instituciones 
+          donde también estudié piano, guitarra y dirección coral.
+          Paralelamente realicé muchas actividades relacionadas al deporte y la biomecánica del cuerpo. 
+          A los cinco años practicaba danza, luego empecé a entrenar natación para más adelante lograr ser 
+          instructora y Guardavidas. Esto me permitió tener un conocimiento de la anatomía humana y su funcionamiento 
+          pudiendo aportar a todos los ejercicios de técnica vocal una mirada que toma el canto como una actividad física. 
+          También dediqué muchos años a las prácticas de respiración, comprendiendo el impacto que tiene en nuestro 
+          sistema nervioso y por lo tanto en nuestra voz. Es ya evidente la relación entre cuerpo-mente-emoción, y 
+          gracias a esta noción los resultados son maravillosos.
+          A lo largo de los años, acompañé a cientos de personas a conectar con su voz, no solo para cantar mejor, 
+          sino para expresarse con libertad, ganar seguridad y reconectar con su identidad. Hoy mi deseo es guiarte a 
+          descubrir el poder transformador que hay en la música y en la voz humana, para que veas que al usarla con 
+          consciencia no solo cambiará tu sonoridad y expresión sino también tu vida, tus relaciones, tus pensamientos, autoestima y percepción de las cosas. 
+          Te invito a vivir Un minuto sin tiempo.</p>
+    </section>
+
+    <section class="contacto" id="Contacto">
+
+      <form class="contact-form" action="enviar.php" method="POST">
+       <label for="nombre">Nombre</label>
+       <input type="text" id="nombre" name="nombre" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="mensaje">Mensaje</label>
+      <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+      <button type="submit">Enviar mensaje</button>
+     </form>
+
+
+    <div class="contact-info">
+      <h3>Resolvamos tus<br>inquietudes</h3>
+      <p>Te invito a explorar tu voz y dejar que la música revele lo que las palabras no pueden</p>
+      <div class="instagram">
+        <img class="instagram-icon" src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+        <span>@unminutosintiempo</span>
+      </div>
+    </div>
+    </section>
+
+    <a
+    href="https://wa.me/549XXXXXXXXXX"
+    class="whatsapp-float"
+    target="_blank"
+    aria-label="Chatear por WhatsApp"
+    title="Enviame un mensaje por WhatsApp">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+  </a>
 
     </main>
+
+    <footer class="copyright-bar">
+  <p class="copyright-text">
+    &copy; 2025 Un minuto sin tiempo.
+  </p>
+  <span class="separator"></span>
+  <a href="https://www.flormaidana.com.ar/" target="_blank" class="copyright-icon" title="Flor Maidana">
+    <i class="bi bi-flower3"></i>
+  </a>
+</footer>
+
+
 
     <script>
       const preloader = document.getElementById("preloader");
       const video = document.getElementById("introVideo");
       const main = document.getElementById("mainContent");
 
-      // Oculta el video una vez que la página cargó o el video termina
       function hidePreloader() {
         preloader.classList.add("opacity-0", "pointer-events-none");
         main.classList.add("opacity-100");
         setTimeout(() => preloader.remove(), 800);
       }
 
-      // Cuando todo el contenido esté listo
       window.addEventListener("load", () => {
-        // Si el video tiene una duración, esperá que termine
         if (video.readyState >= 2) {
           video.addEventListener("ended", hidePreloader);
-          // Por si el video es corto o no termina bien, seguridad:
           setTimeout(hidePreloader, 24000);
         } else {
           hidePreloader();
         }
       });
     </script>
+
+   <script>
+  const menuIcon = document.querySelector('#menu-icon');
+  const navbar = document.querySelector('.navbar');
+
+  menuIcon.addEventListener('click', () => {
+    navbar.classList.toggle('active');
+  });
+   </script>
+
+   <script>
+  const videos = document.querySelectorAll('.video-testimonio video');
+
+  videos.forEach(video => {
+    video.addEventListener('click', () => {
+      // Silencia todos los demás
+      videos.forEach(v => {
+        if (v !== video) v.muted = true;
+      });
+
+      // Alternar mute del seleccionado
+      video.muted = !video.muted;
+    });
+  });
+</script>
+
+
+
   </body>
 </html>
