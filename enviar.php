@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = htmlspecialchars($_POST["email"]);
     $mensaje = htmlspecialchars($_POST["mensaje"]);
 
-    $para = "tucorreo@ejemplo.com"; // ✅ CAMBIA ESTO
+    $para = "unminutosintiempo@gmail.com"; 
     $asunto = "Mensaje desde formulario de contacto";
     $cuerpo = "Nombre: $nombre\nEmail: $email\nMensaje:\n$mensaje";
 
