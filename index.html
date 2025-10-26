@@ -90,13 +90,13 @@
     </section>
 
     <section class="historias" id="historias"> 
-      <h2 class="titulo">Lo que dicen las voces que se animaron a transformarse</h2>
-      <h3 class="text-home">
+      <h2 class="titulo3">Lo que dicen las voces que se animaron a transformarse</h2>
+      <p class="text-home">
         Cada encuentro deja una huella distinta, un nuevo sonido que se revela. 
         En Un minuto sin tiempo, 
         las experiencias de quienes transitaron este camino reflejan que cantar va mucho más allá de la técnica: 
         es liberar, reconocerse y volver a habitar la voz desde un lugar auténtico y consciente
-      </h3>
+      </p>
 
       <div class="videos-container">
 
@@ -219,8 +219,17 @@
 
   menuIcon.addEventListener('click', () => {
     navbar.classList.toggle('active');
+
+    if (menuIcon.classList.contains('bx-menu')) {
+      menuIcon.classList.remove('bx-menu');
+      menuIcon.classList.add('bx-x');
+    } else {
+      menuIcon.classList.remove('bx-x');
+      menuIcon.classList.add('bx-menu');
+    }
   });
    </script>
+
 
    <script>
   const videos = document.querySelectorAll('.video-testimonio video');

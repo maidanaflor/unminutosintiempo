@@ -14,7 +14,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: 'League Spartan', sans-serif;
 }
+
 
 .menu {
   font-family: 'Special Elite', cursive;
@@ -45,7 +47,6 @@ body {
 }
 
 .navbar {
-  width: 100%;
   background-color: #262827;
   display: flex;
   gap: 20px;
@@ -53,6 +54,7 @@ body {
   justify-content: center;
   border-radius: 20px;
   padding: 10px 20px;
+  width: 100%;
 }
 
 .nav-link {
@@ -98,8 +100,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  padding: 20px;
+  min-height: 80vh;
+  padding: 100px 20px 60px;
   text-align: center;
 }
 
@@ -126,6 +128,8 @@ body {
   animation: fadeInText 1s ease-out forwards;
   animation-delay: 0.5s;
   color: #D9C2AB;
+  font-size: 18px;
+  line-height: 1.6;
 }
 
 @keyframes fadeInText {
@@ -138,43 +142,27 @@ body {
 
 @media (max-width: 1024px) {
   .text-home {
-    font-size: 18px;
-    padding: 0 15px;
-  }
-
-  .home-contenido {
-    padding: 0 30px;
-  }
+    font-size: 17px; 
+   }
 }
 
 @media (max-width: 768px) {
   .text-home {
-    font-size: 17px;
-    padding: 0 20px;
-  }
-
-  .home {
-    padding: 30px 10px;
+    font-size: 16px;
   }
 }
 
 @media (max-width: 480px) {
   .text-home {
     font-size: 16px;
-    padding: 0 25px;
-  }
-
-  .home-contenido {
-    padding: 0 15px;
   }
 }
 
 /* MENTORIAS */
 
 .mentorias {
-  scroll-margin-top: 100px; /* 👉 evita que quede debajo del header al hacer clic */
-  margin-top: 60px; /* espacio visual desde el borde superior */
-  padding: 40px 20px;
+  scroll-margin-top: 90px; /* evita que quede debajo del header al hacer clic */
+  padding: 60px 20px;
   display: flex;
   flex-direction: column;
   gap: 60px; /* separa la parte de mentorías y el bloque "por qué cantar" */
@@ -182,12 +170,11 @@ body {
 
 .cursos-contenido {
   background: url('img/fondo1.jpg') no-repeat center center;
-  background-size: cover;
   padding: 60px 20px;
   border-radius: 25px;
   border: 2px solid #D9C2AB;
   max-width: 1200px;
-  margin: 40px auto;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -203,21 +190,18 @@ body {
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
   justify-items: center;
-  align-items: start;
 }
 
 .mentor-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
   max-width: 300px;
   transition: transform 0.3s ease;
 }
 
 .mentor-card img {
   width: 80%;
-  height: auto;
   border-radius: 10px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -258,7 +242,7 @@ body {
   }
 
   .titulo {
-    font-size: 36px;
+    font-size: 32px;
   }
 }
 
@@ -266,8 +250,7 @@ body {
 
 .porquecantar {
   background: url('img/fondo2.jpg') no-repeat center center;
-  background-size: cover;
-  padding: 40px 30px;
+  padding: 60px 30px;
   border-radius: 25px;
   border: 2px solid #D9C2AB;
   max-width: 1200px;
@@ -281,7 +264,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background-color: rgba(255, 255, 255, 0.3); /* Oscurece para contraste */
+  background-color: rgba(255, 255, 255, 0.3); 
   border-radius: 25px;
   z-index: -1;
 }
@@ -290,14 +273,12 @@ body {
   font-family: 'Special Elite', cursive;
   font-size: 40px;
   color: #262827; /* Color claro que contrasta bien */
-  margin-bottom: 30px;
 }
 
 .porquecantar p {
   color: #262626;
   font-size: 18px;
   line-height: 1.8;
-  text-align: justify;
   max-width: 900px;
   margin: 0 auto;
   padding: 0 10px;
@@ -318,9 +299,7 @@ body {
 
 .historias {
   scroll-margin-top: 100px;
-  margin-top: 60px;
-  background: url('img/fondo1.jpg') no-repeat center center;
-  background-size: cover;
+  background: url('img/fondo3.jpg') no-repeat center center;
   padding: 60px 20px;
   border-radius: 25px;
   border: 2px solid #D9C2AB;
@@ -328,17 +307,16 @@ body {
   color: #D9C2AB;
   max-width: 1200px;
   margin: 60px auto;
-
 }
 
-.historias .titulo {
+.titulo3 {
   font-family: 'Special Elite', cursive;
-  font-size: 36px;
+  font-size: 32px;
   margin-bottom: 20px;
 }
 
-.historias .text-home {
-  font-size: 18px;
+.text-home {
+  font-size: 16px;
   line-height: 1.6;
   max-width: 900px;
   margin: 0 auto 40px;
@@ -385,15 +363,30 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  .titulo3 {
+    font-size: 25px;
+  }
+
+  .historias p {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+}
+
 @media (max-width: 600px) {
   .videos-container {
     grid-template-columns: 1fr;
   }
 
   .video-testimonio video {
-    width: 180px;
-    height: 260px;
+    width: 140px;
+    height: 230px;
   }
+
+  .video-testimonio p {
+  font-size: 13px;
+}
 }
 
 /*SOBRE MI*/
@@ -405,7 +398,7 @@ body {
   background-size: cover;
   border: 2px solid #D9C2AB;
   border-radius: 25px;
-  padding: 40px 30px;
+  padding: 60px 30px;
   max-width: 1000px;
   margin: 60px auto;
   scroll-margin-top: 100px;
@@ -426,7 +419,7 @@ body {
 
 
 .aboutme img {
-  width: 526px;
+  width: 500px;
   height: auto;
   float: left;
   margin: 0 30px 20px 0;
@@ -450,7 +443,6 @@ body {
   }
 
   .aboutme {
-    text-align: left;
     font-size: 16px;
   }
 }
@@ -459,7 +451,6 @@ body {
 
 .contacto {
   background: url('img/fondo1.jpg') no-repeat center center;
-  background-size: cover;
   border: 2px solid #D9C2AB;
   border-radius: 25px;
   padding: 60px 40px;
@@ -468,7 +459,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 40px;
+  gap: 60px;
   color: #D9C2AB;
   font-family: 'Special Elite', cursive;
   scroll-margin-top: 100px;
@@ -568,7 +559,7 @@ body {
 
 .whatsapp-float {
   position: fixed;
-  bottom: 20px;
+  bottom: 50px;
   right: 20px;
   background-color: #25D366;
   width: 60px;
@@ -616,11 +607,6 @@ body {
   opacity: 1;
 }
 
-@media (max-width: 480px) {
-  .whatsapp-float {
-    display: none;
-  }
-}
 
 /* FOOTER */
 
@@ -685,5 +671,5 @@ body {
   .separator {
     height: 14px;
   }
-}
+} 
 
