@@ -169,7 +169,7 @@ body {
 }
 
 .cursos-contenido {
-  background: url('img/fondo1.jpg') no-repeat center center;
+  background-color: #262827;
   padding: 60px 20px;
   border-radius: 25px;
   border: 2px solid #D9C2AB;
