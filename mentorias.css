@@ -1,0 +1,223 @@
+
+/*INFORMACION GENERAL*/
+.info {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 40px;
+  padding: 40px;
+  flex-wrap: wrap;
+  color: #ffffff;
+  margin-top: 120px;
+}
+
+.info img {
+  max-width: 100%;
+  height: auto;
+  width: 300px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.info .m-titulo {
+  font-family: 'Special Elite', cursive;
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.info .m-text {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #ffffff;
+  max-width: 600px;
+}
+
+.info .precio {
+  font-family: 'Special Elite', cursive;
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #d9c2ab;
+}
+
+@media screen and (max-width: 768px) {
+  .info {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+  }
+
+  .info .m-text {
+    text-align: justify;
+    margin: 20px;
+  }
+
+  .info img {
+    width: 70%;
+    max-width: 400px;
+  }
+}
+
+/* FORMULARIO DE PAGO */
+.pago {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+  flex-direction: column;
+  position: relative;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
+  padding: 40px;
+  color: #272727;
+  font-family: Arial, sans-serif;
+}
+
+.formulario-pago {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+  max-width: 900px;
+  margin: auto;
+  background-image: url('img/fondo2.jpg'); 
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.datos-comprador,
+.metodo-pago {
+  flex: 1 1 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.metodo-pago input[type="radio"] {
+  margin-right: 10px;
+}
+
+.vencimiento-cvv {
+  display: flex;
+  gap: 10px;
+}
+
+.vencimiento-cvv > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.contenedor-btn {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  position: relative;
+  bottom: 20px; /* separacion del borde inferior */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Botón */
+.btn-pago {
+  margin-top: 15px;
+  padding: 12px;
+  background-color: #272727;
+  border: 2px solid #D9C2AB;
+  color: #D9C2AB;
+  font-size: 16px;
+  font-family: 'Special Elite', cursive;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn-pago:hover {
+  border-color: #272727;
+  background-color: #D9C2AB;
+  color: #272727;
+}
+
+/* Texto de seguridad */
+.info-seguridad {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #272727;
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .pago {
+    padding: 25px;
+  }
+
+  .formulario-pago {
+    flex-direction: column;
+    gap: 25px;
+    padding: 20px;
+  }
+
+  .datos-comprador,
+  .metodo-pago {
+    flex: 1 1 100%;
+    gap: 12px;
+  }
+
+  label {
+    font-size: 14px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"] {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .vencimiento-cvv {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-pago {
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+    border-radius: 12px;
+  }
+
+  .info-seguridad {
+    font-size: 12px;
+  }
+
+  .contenedor-btn {
+    bottom: 10px;
+  }
+}

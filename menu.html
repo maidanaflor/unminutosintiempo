@@ -1,0 +1,112 @@
+<!-- MENU.HTML -->
+<header class="menu">
+    <a href="index.html" class="logo">
+        <img src="img/logocircular.png" alt="">
+    </a>
+
+    <i class='bx bx-menu' id="menu-icon"></i>
+
+    <nav class="navbar">
+        <a href="index.html#mentorias" class="nav-link">Mentorías</a>
+        <a href="index.html#historias" class="nav-link">Testimonios</a>
+        <a href="index.html#sobremi" class="nav-link">Sobre Mí</a>
+        <a href="index.html#contacto" class="nav-link">Contacto</a>
+    </nav>
+</header>
+
+<style>
+/* ============ MENU ============ */
+.menu {
+  font-family: 'Special Elite', cursive;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background-color: #262827;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #D9C2AB;
+}
+
+.logo img {
+  width: 50px;
+  height: auto;
+  display: block;
+}
+
+#menu-icon {
+  font-size: 30px;
+  color: #D9C2AB;
+  cursor: pointer;
+  display: none;
+}
+
+.navbar {
+  background-color: #262827;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  padding: 10px 20px;
+  width: 100%;
+}
+
+.nav-link {
+  color: #D9C2AB;
+  text-decoration: none;
+  border: 2px solid #D9C2AB;
+  padding: 8px 16px;
+  border-radius: 50px;
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: rgba(217, 194, 171, 0.2);
+  transform: scale(1.05);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  #menu-icon {
+    display: block;
+  }
+
+  .navbar {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background-color: #262827;
+    display: none;
+    padding: 20px 0;
+    border-top: 1px solid #D9C2AB;
+    border-radius: 0 0 20px 20px;
+  }
+
+  .navbar.active {
+    display: flex;
+  }
+}
+
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const menuIcon = document.querySelector('#menu-icon');
+  const navbar = document.querySelector('.navbar');
+
+  menuIcon.addEventListener('click', () => {
+    navbar.classList.toggle('active');
+
+    // Alternar ícono entre menú y "X"
+    menuIcon.classList.toggle('bx-menu');
+    menuIcon.classList.toggle('bx-x');
+  });
+});
+</script>
