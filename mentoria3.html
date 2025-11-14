@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mentorias.css">
+    <link rel="stylesheet" href="pago.css">
     
     <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600&display=swap" rel="stylesheet">
@@ -47,7 +48,7 @@
     </section>
 
     <section class="pago">
-      <form class="formulario-pago">
+      <form class="formulario-pago" id="formulario-pago" method="POST" action="pago_mercado.php">
     <div class="datos-comprador">
       <h2>Datos del comprador</h2>
       <label for="nombre">Nombre y Apellido</label>
@@ -70,7 +71,7 @@
         Tarjeta de credito/debito
       </label>
       <label>
-        <input type="radio" name="pago" value="mercado">
+        <input type="radio" name="pago" value="mercado" data-metodo="mercado-pago">
         Mercado Pago
       </label>
       <label>
@@ -78,20 +79,82 @@
         Transferencia Bancaria
       </label>
 
-      <label for="tarjeta">Numero de tarjeta</label>
-      <input type="text" id="tarjeta" name="tarjeta">
+      <div id="campos-tarjeta">
+        <label for="tarjeta">Numero de tarjeta</label>
+        <input type="text" id="tarjeta" name="tarjeta">
 
-      <div class="vencimiento-cvv">
-        <div>
-          <label for="vencimiento">Fecha de vencimiento</label>
-          <input type="text" id="vencimiento" name="vencimiento" placeholder="MM/AA">
+        <div class="vencimiento-cvv">
+          <div>
+            <label for="vencimiento">Fecha de vencimiento</label>
+            <input type="text" id="vencimiento" name="vencimiento" placeholder="MM/AA">
+          </div>
+          <div>
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" name="cvv">
+          </div>
         </div>
-        <div>
-          <label for="cvv">CVV</label>
-          <input type="text" id="cvv" name="cvv">
+      </div>
+
+      <!-- SECCIÓN DE TRANSFERENCIA BANCARIA -->
+      <div id="campos-transferencia" style="display: none;">
+        <div class="transferencia-info">
+          <h3>📋 Datos para Transferencia Bancaria</h3>
+          
+          <div class="datos-bancarios">
+            <div class="dato-item">
+              <label>Banco:</label>
+              <span class="valor">Banco Nación Argentina</span>
+              <button type="button" class="btn-copiar" onclick="copiarAlPortapapeles('Banco Nación Argentina')">Copiar</button>
+            </div>
+
+            <div class="dato-item">
+              <label>CBU:</label>
+              <span class="valor" id="cbu-valor">0123456789012345678901</span>
+              <button type="button" class="btn-copiar" onclick="copiarAlPortapapeles(document.getElementById('cbu-valor').textContent)">Copiar</button>
+            </div>
+
+            <div class="dato-item">
+              <label>Alias:</label>
+              <span class="valor">unminutosintiempo</span>
+              <button type="button" class="btn-copiar" onclick="copiarAlPortapapeles('unminutosintiempo')">Copiar</button>
+            </div>
+
+            <div class="dato-item">
+              <label>Titular:</label>
+              <span class="valor">Valeria Jofre</span>
+              <button type="button" class="btn-copiar" onclick="copiarAlPortapapeles('Valeria Jofre')">Copiar</button>
+            </div>
+          </div>
+
+          <div class="instrucciones-transfer">
+            <p><strong>⏳ Pasos:</strong></p>
+            <ol>
+              <li>Realiza la transferencia con los datos anteriores</li>
+              <li>Descarga o captura el comprobante</li>
+              <li>Envíalo por WhatsApp o Email</li>
+              <li>Te confirmaremos tu acceso en 24hs</li>
+            </ol>
+          </div>
+
+          <div class="botones-envio">
+            <a href="https://wa.me/5491123456789?text=Hola%20Valeria%2C%20realicé%20una%20transferencia%20para%20la%20mentoría%20%22El%20idioma%20universal%22.%20Adjunto%20el%20comprobante." 
+               target="_blank" class="btn-whatsapp">
+              <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
+            </a>
+            <a href="mailto:unminutosintiempo@gmail.com?subject=Comprobante de Transferencia - Mentoría&body=Hola%20Valeria%2C%20realicé%20una%20transferencia%20para%20la%20mentoría%20%22El%20idioma%20universal%22.%0A%0APodrías%20confirmar%20la%20recepción." 
+               class="btn-email">
+              <i class="fas fa-envelope"></i> Enviar por Email
+            </a>
+          </div>
+
+          <p class="nota-seguridad">✔️ Tus datos están seguros | Confirmación en 24 horas</p>
         </div>
       </div>
     </div>
+
+    <!-- Campos ocultos para Mercado Pago -->
+    <input type="hidden" name="mentoria" value="El idioma universal">
+    <input type="hidden" name="precio" value="0.00">
 
     <div class="contenedor-btn"><button type="submit" class="btn-pago">Finalizar compra</button>
        <p class="info-seguridad">✔️ Pago 100% seguro | Acceso inmediato después del pago</p>
@@ -99,6 +162,49 @@
 
   </form>
     </section>
+
+    <script>
+      document.getElementById('formulario-pago').addEventListener('submit', function(e) {
+        const metodoPago = document.querySelector('input[name="pago"]:checked').value;
+        
+        if (metodoPago === 'mercado') {
+          return true;
+        } else if (metodoPago === 'tarjeta') {
+          e.preventDefault();
+          alert('Procesamiento de tarjeta en desarrollo');
+          return false;
+        } else if (metodoPago === 'transferencia') {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      document.querySelectorAll('input[name="pago"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+          const camposTarjeta = document.getElementById('campos-tarjeta');
+          const camposTransferencia = document.getElementById('campos-transferencia');
+          
+          if (this.value === 'tarjeta') {
+            camposTarjeta.style.display = 'block';
+            camposTransferencia.style.display = 'none';
+          } else if (this.value === 'transferencia') {
+            camposTarjeta.style.display = 'none';
+            camposTransferencia.style.display = 'block';
+          } else {
+            camposTarjeta.style.display = 'none';
+            camposTransferencia.style.display = 'none';
+          }
+        });
+      });
+
+      function copiarAlPortapapeles(texto) {
+        navigator.clipboard.writeText(texto).then(() => {
+          alert('✓ Copiado al portapapeles: ' + texto);
+        }).catch(() => {
+          alert('Error al copiar. Intenta manualmente.');
+        });
+      }
+    </script>
 
         <section class="redes">
        <div class="redes-left">
@@ -129,6 +235,8 @@
           document.getElementById("footer-container").innerHTML = data;
         });
     </script>
+
+    <script src="pago.js"></script>
   
 
 

@@ -1,0 +1,440 @@
+/* Estilos para formularios de pago */
+
+.formulario-pago {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 30px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.datos-comprador,
+.metodo-pago {
+  margin-bottom: 30px;
+}
+
+.datos-comprador h2,
+.metodo-pago h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #262827;
+  border-bottom: 2px solid #D9C2AB;
+  padding-bottom: 10px;
+}
+
+.formulario-pago label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #333;
+  font-size: 14px;
+}
+
+.formulario-pago input[type="text"],
+.formulario-pago input[type="email"],
+.formulario-pago input[type="tel"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.formulario-pago input[type="text"]:focus,
+.formulario-pago input[type="email"]:focus,
+.formulario-pago input[type="tel"]:focus {
+  outline: none;
+  border-color: #D9C2AB;
+  box-shadow: 0 0 5px rgba(217, 194, 171, 0.3);
+}
+
+/* Radio buttons */
+.metodo-pago label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  font-weight: normal;
+}
+
+.metodo-pago input[type="radio"] {
+  margin-right: 10px;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+}
+
+/* Campos de tarjeta - mostrar/ocultar */
+#campos-tarjeta {
+  background: white;
+  padding: 15px;
+  border-radius: 5px;
+  border-left: 4px solid #D9C2AB;
+  margin-top: 15px;
+}
+
+/* SECCIÓN DE TRANSFERENCIA BANCARIA */
+#campos-transferencia {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  border-left: 4px solid #28a745;
+  margin-top: 15px;
+}
+
+.transferencia-info h3 {
+  color: #262827;
+  font-size: 18px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #28a745;
+  padding-bottom: 10px;
+}
+
+.datos-bancarios {
+  background: #f0f8f4;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.dato-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #d0e8df;
+}
+
+.dato-item:last-child {
+  border-bottom: none;
+}
+
+.dato-item label {
+  font-weight: bold;
+  color: #333;
+  min-width: 100px;
+  margin: 0;
+}
+
+.dato-item .valor {
+  flex: 1;
+  margin: 0 15px;
+  background: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: #262827;
+  border: 1px solid #ddd;
+}
+
+.btn-copiar {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+  white-space: nowrap;
+}
+
+.btn-copiar:hover {
+  background: #218838;
+}
+
+.btn-copiar:active {
+  transform: scale(0.98);
+}
+
+.instrucciones-transferencia {
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.instrucciones-transferencia p {
+  margin: 0 0 10px 0;
+  color: #856404;
+  font-size: 14px;
+}
+
+.instrucciones-transferencia ol {
+  margin: 10px 0 0 20px;
+  color: #856404;
+  font-size: 14px;
+  padding: 0;
+}
+
+.instrucciones-transferencia li {
+  margin-bottom: 8px;
+}
+
+.botones-envio {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.botones-envio .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.botones-envio .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-whatsapp {
+  background: #25D366;
+  color: white;
+}
+
+.btn-whatsapp:hover {
+  background: #20ba5a;
+}
+
+.btn-email {
+  background: #D9C2AB;
+  color: #262827;
+}
+
+.btn-email:hover {
+  background: #d4af37;
+}
+
+/* Confirmación de transferencia */
+.confirmacion-transferencia {
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+  padding: 15px;
+  border-radius: 5px;
+  color: #155724;
+}
+
+.confirmacion-transferencia h4 {
+  margin: 0 0 10px 0;
+  color: #155724;
+  font-size: 16px;
+}
+
+.confirmacion-transferencia p {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.confirmacion-transferencia ol {
+  margin: 10px 0 0 20px;
+  padding: 0;
+}
+
+.confirmacion-transferencia li {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+/* Toast notification */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #28a745;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s;
+  max-width: 300px;
+  word-break: break-word;
+}
+
+.toast.toast-success {
+  background: #28a745;
+}
+
+.toast.toast-error {
+  background: #dc3545;
+}
+
+.vencimiento-cvv {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.vencimiento-cvv div {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Botón de envío */
+.contenedor-btn {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.btn-pago {
+  background: linear-gradient(135deg, #D9C2AB, #D4AF37);
+  color: #262827;
+  border: none;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  width: 100%;
+}
+
+.btn-pago:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(217, 194, 171, 0.4);
+}
+
+.btn-pago:active {
+  transform: translateY(0);
+}
+
+.info-seguridad {
+  margin-top: 15px;
+  font-size: 13px;
+  color: #666;
+  text-align: center;
+}
+
+/* Mensajes de alerta */
+.mensaje-alerta {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border-left: 4px solid;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mensaje-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-left-color: #f5c6cb;
+}
+
+.mensaje-success {
+  background-color: #d4edda;
+  color: #155724;
+  border-left-color: #c3e6cb;
+}
+
+.mensaje-info {
+  background-color: #d1ecf1;
+  color: #0c5460;
+  border-left-color: #bee5eb;
+}
+
+.mensaje-warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border-left-color: #ffeaa7;
+}
+
+/* Instrucciones de transferencia */
+.instrucciones-transferencia {
+  background: #f0f0f0;
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+.instrucciones-transferencia h3 {
+  color: #262827;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.instrucciones-transferencia p {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .formulario-pago {
+    padding: 20px;
+  }
+
+  .vencimiento-cvv {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-pago {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .dato-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .dato-item label {
+    min-width: auto;
+  }
+
+  .dato-item .valor {
+    width: 100%;
+    margin: 0;
+  }
+
+  .btn-copiar {
+    width: 100%;
+    text-align: center;
+  }
+
+  .botones-envio {
+    grid-template-columns: 1fr;
+  }
+
+  .botones-envio .btn {
+    width: 100%;
+  }
+
+  .toast {
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
+}
