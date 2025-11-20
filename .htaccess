@@ -1,0 +1,27 @@
+RewriteEngine On
+
+# Permitir CORS para las requests de MercadoPago
+Header always set Access-Control-Allow-Origin "*"
+Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"
+Header always set Access-Control-Allow-Headers "x-requested-with, Content-Type, origin, authorization, accept, client-security-token"
+
+# Redireccionar a HTTPS (opcional, para producción)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Configuración de seguridad para archivos PHP
+<Files "process_payment.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+# Proteger archivos de configuración
+<Files "composer.*">
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+<Files ".env">
+    Order Deny,Allow
+    Deny from all
+</Files>

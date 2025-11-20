@@ -137,22 +137,72 @@ document.addEventListener("DOMContentLoaded", function () {
           },
         },
         callbacks: {
-          onSubmit: (cardFormData) => {
+          onSubmit: (formData) => {
             return new Promise((resolve, reject) => {
-              console.log("Procesando pago con MercadoPago:", cardFormData);
+              console.log("Enviando pago a servidor:", formData);
               
-              // MercadoPago procesa el pago directamente
-              // No necesitas servidor - todo se maneja del lado cliente
               mostrarMensaje("Procesando pago...", "info");
               
-              // Simular proceso (MercadoPago maneja esto internamente)
-              setTimeout(() => {
-                // En la implementación real, MercadoPago devuelve el resultado
-                console.log("Pago enviado a MercadoPago exitosamente");
-                mostrarMensaje("¡Pago enviado exitosamente! Recibirás confirmación por email.", "success");
+              // Enviar al endpoint PHP
+              fetch("process_payment.php", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+              })
+              .then(async (response) => {
+                const contentType = response.headers.get("content-type");
                 
-                resolve(); // El pago fue enviado correctamente
-              }, 2000);
+                if (!response.ok) {
+                  throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                // Verificar si la respuesta es JSON
+                if (contentType && contentType.indexOf("application/json") !== -1) {
+                  return await response.json();
+                } else {
+                  // Si no es JSON, obtener como texto para debug
+                  const text = await response.text();
+                  console.warn("Respuesta no es JSON:", text);
+                  throw new Error("Respuesta inválida del servidor");
+                }
+              })
+              .then((result) => {
+                console.log("Respuesta del pago:", result);
+                
+                // Manejar diferentes estados
+                switch(result.status) {
+                  case 'approved':
+                    mostrarMensaje("¡Pago aprobado exitosamente! ID: " + result.payment_id, "success");
+                    resolve();
+                    break;
+                    
+                  case 'pending':
+                    mostrarMensaje("Pago pendiente de aprobación. ID: " + result.payment_id, "info");
+                    resolve();
+                    break;
+                    
+                  case 'in_process':
+                    mostrarMensaje("Pago en proceso de verificación. ID: " + result.payment_id, "info");
+                    resolve();
+                    break;
+                    
+                  case 'rejected':
+                    mostrarMensaje("Pago rechazado: " + result.message, "error");
+                    reject(new Error(result.error || "Pago rechazado"));
+                    break;
+                    
+                  default:
+                    mostrarMensaje("Error: " + (result.error || result.message), "error");
+                    reject(new Error(result.error || "Error desconocido"));
+                }
+              })
+              .catch((error) => {
+                console.error("Error procesando pago:", error);
+                mostrarMensaje(`Error al procesar el pago: ${error.message}`, "error");
+                reject(error);
+              });
             });
           },
           onReady: () => {
@@ -386,3 +436,5 @@ function showToast(mensaje, tipo = "success") {
     }, 300);
   }, 2000);
 }
+
+
