@@ -1,56 +1,72 @@
-/* Estilos para formularios de pago */
+/* Estilos para formularios de pago - Compatibles con mentorias.css */
 
 .formulario-pago {
-  max-width: 500px;
-  margin: 0 auto;
+  max-width: 900px;
+  margin: auto;
   padding: 30px;
-  background: #f9f9f9;
+  background-image: url('img/fondo2.jpg');
+  background-size: cover;
+  background-position: center;
   border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  color: #272727;
+  font-family: 'League Spartan', sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
 }
 
 .datos-comprador,
 .metodo-pago {
-  margin-bottom: 30px;
+  flex: 1 1 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 0;
 }
 
 .datos-comprador h2,
 .metodo-pago h2 {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 15px;
-  color: #262827;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #ffffff;
   border-bottom: 2px solid #D9C2AB;
   padding-bottom: 10px;
+  font-family: 'Special Elite', cursive;
 }
 
 .formulario-pago label {
   display: block;
   margin-bottom: 8px;
   font-weight: 500;
-  color: #333;
+  color: #ffffff;
   font-size: 14px;
+  font-family: 'League Spartan', sans-serif;
 }
 
 .formulario-pago input[type="text"],
 .formulario-pago input[type="email"],
 .formulario-pago input[type="tel"] {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin-bottom: 15px;
-  border: 1px solid #ddd;
+  border: 1px solid #D9C2AB;
   border-radius: 5px;
   font-size: 14px;
   box-sizing: border-box;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  background: rgba(255, 255, 255, 0.95);
+  color: #272727;
 }
 
 .formulario-pago input[type="text"]:focus,
 .formulario-pago input[type="email"]:focus,
 .formulario-pago input[type="tel"]:focus {
   outline: none;
-  border-color: #D9C2AB;
-  box-shadow: 0 0 5px rgba(217, 194, 171, 0.3);
+  border-color: #d9c2ab;
+  box-shadow: 0 0 8px rgba(217, 194, 171, 0.5);
+  background: white;
 }
 
 /* Radio buttons */
@@ -59,6 +75,9 @@
   align-items: center;
   margin-bottom: 12px;
   font-weight: normal;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: 'League Spartan', sans-serif;
 }
 
 .metodo-pago input[type="radio"] {
@@ -66,36 +85,48 @@
   cursor: pointer;
   width: 18px;
   height: 18px;
+  accent-color: #D9C2AB;
 }
 
 /* Campos de tarjeta - mostrar/ocultar */
 #campos-tarjeta {
-  background: white;
-  padding: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
   border-radius: 5px;
   border-left: 4px solid #D9C2AB;
   margin-top: 15px;
 }
 
+#campos-tarjeta label {
+  color: #272727;
+}
+
+#campos-tarjeta input {
+  background: white;
+  color: #272727;
+  border-color: #D9C2AB;
+}
+
 /* SECCIÓN DE TRANSFERENCIA BANCARIA */
 #campos-transferencia {
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
   padding: 20px;
   border-radius: 5px;
-  border-left: 4px solid #28a745;
+  border-left: 4px solid #D9C2AB;
   margin-top: 15px;
 }
 
 .transferencia-info h3 {
-  color: #262827;
+  color: #272727;
   font-size: 18px;
   margin-bottom: 20px;
-  border-bottom: 2px solid #28a745;
+  border-bottom: 2px solid #D9C2AB;
   padding-bottom: 10px;
+  font-family: 'Special Elite', cursive;
 }
 
 .datos-bancarios {
-  background: #f0f8f4;
+  background: #f0e3d7;
   padding: 15px;
   border-radius: 5px;
   margin-bottom: 20px;
@@ -106,7 +137,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px 0;
-  border-bottom: 1px solid #d0e8df;
+  border-bottom: 1px solid #d9c2ab;
 }
 
 .dato-item:last-child {
@@ -115,9 +146,10 @@
 
 .dato-item label {
   font-weight: bold;
-  color: #333;
+  color: #272727;
   min-width: 100px;
   margin: 0;
+  font-family: 'League Spartan', sans-serif;
 }
 
 .dato-item .valor {
@@ -128,12 +160,12 @@
   border-radius: 4px;
   font-family: 'Courier New', monospace;
   font-size: 14px;
-  color: #262827;
+  color: #272727;
   border: 1px solid #ddd;
 }
 
 .btn-copiar {
-  background: #28a745;
+  background: #d9c2ab;
   color: white;
   border: none;
   padding: 8px 15px;
@@ -146,7 +178,7 @@
 }
 
 .btn-copiar:hover {
-  background: #218838;
+  background: #a1907f;
 }
 
 .btn-copiar:active {
@@ -205,6 +237,8 @@
 }
 
 .btn-whatsapp {
+  padding: 10px;
+  border-radius: 15px;
   background: #25D366;
   color: white;
 }
@@ -289,15 +323,9 @@
   flex-direction: column;
 }
 
-/* Botón de envío */
-.contenedor-btn {
-  margin-top: 30px;
-  text-align: center;
-}
-
 .btn-pago {
   background: linear-gradient(135deg, #D9C2AB, #D4AF37);
-  color: #262827;
+  color: #272727;
   border: none;
   padding: 12px 30px;
   font-size: 16px;
@@ -306,11 +334,12 @@
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
   width: 100%;
+  font-family: 'League Spartan', sans-serif;
 }
 
 .btn-pago:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(217, 194, 171, 0.4);
+  box-shadow: 0 5px 15px rgba(217, 194, 171, 0.6);
 }
 
 .btn-pago:active {
@@ -389,9 +418,15 @@
 }
 
 /* Responsive */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .formulario-pago {
+    flex-direction: column;
     padding: 20px;
+  }
+
+  .datos-comprador,
+  .metodo-pago {
+    flex: 1 1 100%;
   }
 
   .vencimiento-cvv {
