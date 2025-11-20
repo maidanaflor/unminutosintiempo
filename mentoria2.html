@@ -78,6 +78,11 @@
         Transferencia Bancaria
       </label>
 
+      <!-- SECCIÓN DE MERCADO PAGO -->
+      <div id="campos-mercado" style="display: none;">
+        <div id="cardPaymentBrick_container"></div>
+      </div>
+
       <div id="campos-tarjeta">
         <label for="tarjeta">Numero de tarjeta</label>
         <input type="text" id="tarjeta" name="tarjeta">
@@ -232,9 +237,8 @@
         });
     </script>
 
+    <!-- Configuración de la app (cargar antes que pago.js) -->
+    <script src="config.js"></script>
     <script src="pago.js"></script>
-  
-
-
   </body>
 </html>
