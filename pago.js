@@ -101,16 +101,14 @@ document.addEventListener("DOMContentLoaded", function () {
         handleBrickBuilder(mp);
       } catch (error) {
         console.error("Error al cargar MercadoPago:", error);
-        mostrarMensaje(
-          "Error al cargar MercadoPago. Intenta de nuevo.",
-          "error"
-        );
+        showErrorMessage("Error al cargar MercadoPago. Recarga la página.");
       }
     }
   }
 
-  // Variable para mantener referencia al controlador del brick
+  // Variables para mantener referencia a los controladores de bricks
   let cardPaymentBrickController = null;
+  let statusScreenBrickController = null;
 
   function handleBrickBuilder(mp) {
     const bricksBuilder = mp.bricks();
@@ -141,8 +139,9 @@ document.addEventListener("DOMContentLoaded", function () {
             return new Promise((resolve, reject) => {
               console.log("Enviando pago a servidor:", formData);
               
-              mostrarMensaje("Procesando pago...", "info");
-              
+              // Mostrar loading general
+              showLoadingSpinner();
+                            
               // Enviar al endpoint PHP
               fetch("process_payment.php", {
                 method: "POST",
@@ -171,36 +170,25 @@ document.addEventListener("DOMContentLoaded", function () {
               .then((result) => {
                 console.log("Respuesta del pago:", result);
                 
-                // Manejar diferentes estados
-                switch(result.status) {
-                  case 'approved':
-                    mostrarMensaje("¡Pago aprobado exitosamente! ID: " + result.payment_id, "success");
-                    resolve();
-                    break;
-                    
-                  case 'pending':
-                    mostrarMensaje("Pago pendiente de aprobación. ID: " + result.payment_id, "info");
-                    resolve();
-                    break;
-                    
-                  case 'in_process':
-                    mostrarMensaje("Pago en proceso de verificación. ID: " + result.payment_id, "info");
-                    resolve();
-                    break;
-                    
-                  case 'rejected':
-                    mostrarMensaje("Pago rechazado: " + result.message, "error");
-                    reject(new Error(result.error || "Pago rechazado"));
-                    break;
-                    
-                  default:
-                    mostrarMensaje("Error: " + (result.error || result.message), "error");
-                    reject(new Error(result.error || "Error desconocido"));
+                // Ocultar loading
+                hideLoadingSpinner();
+                
+                // Verificar si el pago fue exitoso en el servidor
+                if (result.success) {
+                  // Ocultar el formulario de pago y mostrar el Status Screen
+                  hidePaymentForm();
+                  showStatusScreen(result);
+                  resolve();
+                } else {
+                  // Error del servidor - mantener formulario visible
+                  showErrorMessage(result.message || "Error desconocido");
+                  reject(new Error(result.message || "Error del servidor"));
                 }
               })
               .catch((error) => {
                 console.error("Error procesando pago:", error);
-                mostrarMensaje(`Error al procesar el pago: ${error.message}`, "error");
+                hideLoadingSpinner();
+                showErrorMessage(`Error de conexión: ${error.message}`);
                 reject(error);
               });
             });
@@ -210,7 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
           },
           onError: (error) => {
             console.error("Error en MercadoPago Brick:", error);
-            mostrarMensaje("Error en el procesador de pagos", "error");
+            // Los errores de MercadoPago se manejan internamente en el Brick
           },
         },
       };
@@ -224,7 +212,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Brick de pago creado exitosamente");
       } catch (error) {
         console.error("Error creando el brick:", error);
-        mostrarMensaje("Error al cargar el formulario de pago", "error");
+        showErrorMessage("Error al cargar el formulario de pago");
       }
     };
 
@@ -350,38 +338,161 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /**
-   * Muestra un mensaje al usuario
+   * Muestra un spinner de loading
    */
-  function mostrarMensaje(texto, tipo = "info", esHTML = false) {
-    // Buscar o crear contenedor de mensajes
-    let contenedor = document.querySelector(".mensaje-alerta");
-
-    if (!contenedor) {
-      contenedor = document.createElement("div");
-      contenedor.className = "mensaje-alerta";
-      formulario.parentElement.insertBefore(contenedor, formulario);
+  function showLoadingSpinner() {
+    let loadingContainer = document.getElementById("loading-container");
+    
+    if (!loadingContainer) {
+      loadingContainer = document.createElement("div");
+      loadingContainer.id = "loading-container";
+      loadingContainer.className = "loading-overlay";
+      
+      loadingContainer.innerHTML = `
+        <div class="loading-spinner">
+          <div class="spinner"></div>
+          <p>Procesando pago...</p>
+        </div>
+      `;
+      
+      document.body.appendChild(loadingContainer);
     }
-
-    // Limpiar clase anterior
-    contenedor.className = `mensaje-alerta mensaje-${tipo}`;
-
-    // Establecer contenido
-    if (esHTML) {
-      contenedor.innerHTML = texto;
-    } else {
-      contenedor.textContent = texto;
-    }
-
-    // Auto-ocultarse en 5 segundos (solo para mensajes simples)
-    if (!esHTML && tipo === "info") {
-      setTimeout(() => {
-        contenedor.style.display = "none";
-      }, 5000);
-    }
-
-    // Scroll a la vista
-    contenedor.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    
+    loadingContainer.style.display = "flex";
   }
+
+  /**
+   * Oculta el spinner de loading
+   */
+  function hideLoadingSpinner() {
+    const loadingContainer = document.getElementById("loading-container");
+    if (loadingContainer) {
+      loadingContainer.style.display = "none";
+    }
+  }
+
+  /**
+   * Muestra mensaje de error simple (solo para errores críticos)
+   */
+  function showErrorMessage(message) {
+    let errorContainer = document.querySelector(".error-message");
+    
+    if (!errorContainer) {
+      errorContainer = document.createElement("div");
+      errorContainer.className = "error-message";
+      
+      const form = document.getElementById("formulario-pago");
+      const parent = form ? form.parentElement : document.body;
+      
+      if (form && parent) {
+        parent.insertBefore(errorContainer, form);
+      } else {
+        document.body.appendChild(errorContainer);
+      }
+    }
+    
+    errorContainer.innerHTML = `
+      <div class="error-content">
+        <span class="error-icon">⚠️</span>
+        <span class="error-text">${message}</span>
+        <button class="error-close" onclick="this.parentElement.parentElement.style.display='none'">×</button>
+      </div>
+    `;
+    
+    errorContainer.style.display = "block";
+    
+    // Auto-ocultar después de 8 segundos
+    setTimeout(() => {
+      if (errorContainer) {
+        errorContainer.style.display = "none";
+      }
+    }, 8000);
+  }
+
+  /**
+   * Oculta el formulario de pago
+   */
+  function hidePaymentForm() {
+    const camposMercado = document.getElementById("campos-mercado");
+    if (camposMercado) {
+      camposMercado.style.display = "none";
+    }
+  }
+
+  /**
+   * Muestra el Status Screen Brick con el resultado del pago
+   */
+  function showStatusScreen(paymentResult) {
+    console.log("Mostrando Status Screen con resultado:", paymentResult);
+    
+    // Crear contenedor para el Status Screen si no existe
+    let statusContainer = document.getElementById("statusScreenBrick_container");
+    if (!statusContainer) {
+      statusContainer = document.createElement("div");
+      statusContainer.id = "statusScreenBrick_container";
+      statusContainer.style.marginTop = "20px";
+      
+      const camposMercado = document.getElementById("campos-mercado");
+      if (camposMercado && camposMercado.parentElement) {
+        camposMercado.parentElement.appendChild(statusContainer);
+      }
+    }
+    
+    // Limpiar contenedor anterior
+    statusContainer.innerHTML = "";
+    statusContainer.style.display = "block";
+    
+    try {
+      // Obtener la instancia de MercadoPago
+      const publicKey = window.AppConfig?.mercadoPago?.publicKey || "TEST-fallback-key";
+      const mp = new window.MercadoPago(publicKey);
+      const bricksBuilder = mp.bricks();
+      
+      // Configuración del Status Screen Brick
+      const renderStatusScreenBrick = async (bricksBuilder) => {
+        const settings = {
+          initialization: {
+            paymentId: paymentResult.payment_id, // ID del pago procesado
+          },
+          customization: {
+            visual: {
+              hideStatusDetails: false,
+              hideTransactionDate: false,
+              style: {
+                theme: "default" // 'default' | 'dark' | 'bootstrap' | 'flat'
+              }
+            }
+          },
+          callbacks: {
+            onReady: () => {
+              console.log("Status Screen Brick está listo");
+            },
+            onError: (error) => {
+              console.error("Error en Status Screen Brick:", error);
+            },
+          }
+        };
+
+        try {
+          statusScreenBrickController = await bricksBuilder.create(
+            "statusScreen",
+            "statusScreenBrick_container", 
+            settings
+          );
+          console.log("Status Screen Brick creado exitosamente");
+        } catch (error) {
+          console.error("Error creando Status Screen Brick:", error);
+        }
+      };
+
+      renderStatusScreenBrick(bricksBuilder);
+      
+    } catch (error) {
+      console.error("Error inicializando Status Screen:", error);
+    }
+  }
+
+
 
   // Inicializar estado
   cambiarMetodoPago("tarjeta").catch(console.error);

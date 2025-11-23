@@ -38,9 +38,18 @@ class PaymentData
 
     public static function fromArray(array $data): self
     {
+        error_log("PaymentData::fromArray received data: " . json_encode($data, JSON_PRETTY_PRINT));
+        
+        // MercadoPago Bricks puede enviar diferentes estructuras de datos
+        $amount = $data['amount'] ?? $data['transaction_amount'] ?? 0;
+        $token = $data['token'] ?? '';
+        
+        error_log("Extracted amount: " . $amount);
+        error_log("Extracted token: " . $token);
+        
         return new self(
-            transactionAmount: floatval($data['amount']),
-            token: $data['token'],
+            transactionAmount: floatval($amount),
+            token: $token,
             description: $data['description'] ?? 'Compra en unminutosintiempo.com',
             installments: intval($data['installments'] ?? 1),
             paymentMethodId: $data['payment_method_id'] ?? '',

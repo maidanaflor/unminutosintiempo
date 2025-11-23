@@ -44,16 +44,19 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 try {
-    $input = json_decode(file_get_contents('php://input'), true);
+    $rawInput = file_get_contents('php://input');
+    error_log("Raw input received: " . $rawInput);
+    
+    $input = json_decode($rawInput, true);
+    error_log("Parsed input: " . json_encode($input, JSON_PRETTY_PRINT));
     
     if (!$input) {
+        error_log("ERROR: Failed to decode JSON data");
         throw new InvalidArgumentException('Invalid JSON data');
     }
 
     // Cargar configuración (usar la versión de Hostinger si existe)
-    $configFile = file_exists('config_mercadopago_hostinger.php') 
-        ? 'config_mercadopago_hostinger.php' 
-        : 'config_mercadopago.php';
+    $configFile = 'config_mercadopago.php';
     
     $config = include $configFile;
     
@@ -74,6 +77,7 @@ try {
     $result = $paymentService->processPayment($paymentData);
     
     if (!$result->isSuccess()) {
+        echo $result->toJson();
         http_response_code(422);
     }
     

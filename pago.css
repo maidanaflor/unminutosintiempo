@@ -353,49 +353,7 @@
   text-align: center;
 }
 
-/* Mensajes de alerta */
-.mensaje-alerta {
-  padding: 15px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  border-left: 4px solid;
-  animation: slideDown 0.3s ease;
-}
 
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.mensaje-error {
-  background-color: #f8d7da;
-  color: #721c24;
-  border-left-color: #f5c6cb;
-}
-
-.mensaje-success {
-  background-color: #d4edda;
-  color: #155724;
-  border-left-color: #c3e6cb;
-}
-
-.mensaje-info {
-  background-color: #d1ecf1;
-  color: #0c5460;
-  border-left-color: #bee5eb;
-}
-
-.mensaje-warning {
-  background-color: #fff3cd;
-  color: #856404;
-  border-left-color: #ffeaa7;
-}
 
 /* Instrucciones de transferencia */
 .instrucciones-transferencia {
@@ -472,6 +430,105 @@
     left: 10px;
     max-width: none;
   }
+}
+
+
+
+/* Status Screen Container */
+#statusScreenBrick_container {
+  margin-top: 20px;
+  width: 100%;
+}
+
+/* Loading Overlay */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loading-spinner {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #8B4513;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-spinner p {
+  margin: 0;
+  color: #333;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Error Message */
+.error-message {
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
+  margin: 15px 0;
+  display: none;
+}
+
+.error-content {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  gap: 10px;
+}
+
+.error-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.error-text {
+  flex: 1;
+  color: #721c24;
+  font-size: 14px;
+}
+
+.error-close {
+  background: none;
+  border: none;
+  color: #721c24;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.error-close:hover {
+  background-color: rgba(114, 28, 36, 0.1);
 }
 
 
