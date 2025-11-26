@@ -1,0 +1,53 @@
+# Configuración para Hostinger Websites
+# Coloca este archivo en la raíz de tu dominio
+
+# Habilitar PHP 8.1 (o la versión que prefieras)
+# AddHandler application/x-httpd-php81 .php
+
+# Configuración de errores para producción
+php_value display_errors Off
+php_value log_errors On
+php_value error_log /home/tu_usuario/domains/tu_dominio.com/logs/php_errors.log
+
+# Configuración de memoria y tiempo
+php_value memory_limit 256M
+php_value max_execution_time 60
+php_value post_max_size 50M
+php_value upload_max_filesize 50M
+
+# Proteger archivos sensibles
+<Files "composer.*">
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+<Files "config_mercadopago.php">
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+<Files "*.log">
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+# Permitir CORS para MercadoPago
+Header always set Access-Control-Allow-Origin "*"
+Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS"
+Header always set Access-Control-Allow-Headers "Content-Type, Authorization"
+
+# Redirección HTTPS (recomendado para producción)
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Proteger directorios sensibles
+<Directory "vendor/">
+    Order Deny,Allow
+    Deny from all
+</Directory>
+
+<Directory "src/">
+    Order Deny,Allow
+    Deny from all
+</Directory>

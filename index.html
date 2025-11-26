@@ -20,13 +20,6 @@
   </head>
 
   <body>
-      <!-- PRELOADER 
-    <div id="preloader" class="fixed inset-0 flex items-center justify-center bg-black z-[9999] transition-opacity duration-700">
-      <video id="introVideo" class="w-full h-full object-cover" muted playsinline autoplay preload="auto">
-        <source src="#" type="video/mp4" />
-      </video>
-    </div> --> 
-
    <header class="menu">
             <a href="#inicio" class="logo">
                 <img src="img/logocircular.png" alt=""></a>
@@ -192,29 +185,6 @@
     <i class="bi bi-flower3"></i>
   </a>
 </footer>
-
-
-
-    <script>
-      const preloader = document.getElementById("preloader");
-      const video = document.getElementById("introVideo");
-      const main = document.getElementById("mainContent");
-
-      function hidePreloader() {
-        preloader.classList.add("opacity-0", "pointer-events-none");
-        main.classList.add("opacity-100");
-        setTimeout(() => preloader.remove(), 800);
-      }
-
-      window.addEventListener("load", () => {
-        if (video.readyState >= 2) {
-          video.addEventListener("ended", hidePreloader);
-          setTimeout(hidePreloader, 24000);
-        } else {
-          hidePreloader();
-        }
-      });
-    </script>
 
    <script>
   const menuIcon = document.querySelector('#menu-icon');

@@ -1,7 +1,15 @@
+# Archivos de configuración con credenciales
+config.js
 .env*
+
+# Dependencias
 vendor/
+node_modules/
+
+# Archivos del sistema
 .DS_Store
 *.log
-node_modules/
+
+# Build y cache
 _build/
 _site/

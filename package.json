@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "@types/mercadopago-sdk-js": "^2.0.17"
+  }
+}
