@@ -1,5 +1,4 @@
 # Archivos de configuración con credenciales
-config.js
 .env*
 
 # Dependencias
