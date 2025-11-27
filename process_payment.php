@@ -1,6 +1,17 @@
 <?php
 // Versión compatible con Hostinger (PHP 8.0+)
-require_once 'vendor/autoload.php';
+// Cargar configuración de rutas
+$pathConfig = include __DIR__ . '/config_paths.php';
+
+// Usar ruta concreta del autoload
+$autoloadPath = $pathConfig['autoload_path'];
+
+if (!file_exists($autoloadPath)) {
+    error_log("ERROR: Autoload no encontrado en: " . $autoloadPath);
+    die("Error: Composer autoload no encontrado en la ruta configurada");
+}
+
+require_once $autoloadPath;
 
 use UnMinutoSinTiempo\PaymentProcessor\PaymentService;
 use UnMinutoSinTiempo\PaymentProcessor\PaymentData;
