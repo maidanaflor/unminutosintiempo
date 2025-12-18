@@ -150,23 +150,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
                 body: JSON.stringify(formData),
               })
-              .then(async (response) => {
-                const contentType = response.headers.get("content-type");
-                
-                if (!response.ok) {
-                  throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-                }
-                
-                // Verificar si la respuesta es JSON
-                if (contentType && contentType.indexOf("application/json") !== -1) {
-                  return await response.json();
-                } else {
-                  // Si no es JSON, obtener como texto para debug
-                  const text = await response.text();
-                  console.warn("Respuesta no es JSON:", text);
-                  throw new Error("Respuesta inválida del servidor");
-                }
-              })
               .then((result) => {
                 console.log("Respuesta del pago:", result);
                 
